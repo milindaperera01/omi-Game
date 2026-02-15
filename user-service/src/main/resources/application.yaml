@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/omi_app?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: omi_user
+    password: omi_pass_123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+
+server:
+  port: 9004
+
+app:
+  google:
+    client-id: 56250681005-gr23nhji5n2f7dpl5j46ek919oir8ai4.apps.googleusercontent.com
+    client-secret: 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
+    redirect-uri: http://localhost:5173/auth/google/callback
+    token-uri: ${GOOGLE_TOKEN_URI:https://oauth2.googleapis.com/token}
+    jwks-uri: ${GOOGLE_JWKS_URI:https://www.googleapis.com/oauth2/v3/certs}
+  jwt:
+    issuer: ${APP_JWT_ISSUER:omi-user-service}
+    access-ttl-seconds: ${APP_JWT_ACCESS_TTL_SECONDS:900}
+    refresh-ttl-seconds: ${APP_JWT_REFRESH_TTL_SECONDS:2592000}
+    private-key-base64-pkcs8: ${APP_JWT_PRIVATE_KEY_BASE64_PKCS8:}
+    public-key-base64-x509: ${APP_JWT_PUBLIC_KEY_BASE64_X509:}

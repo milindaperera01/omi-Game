@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: logic-service
+
+server:
+  port: 9002

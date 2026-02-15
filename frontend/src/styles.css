@@ -1,0 +1,125 @@
+:root {
+  --bg-0: #f4efe5;
+  --bg-1: #d8f0e3;
+  --ink: #17181f;
+  --ink-soft: #4f5563;
+  --primary: #1e4fb8;
+  --primary-dark: #14367e;
+  --accent: #ef6c3f;
+  --panel: rgba(255, 255, 255, 0.86);
+  --border: rgba(30, 79, 184, 0.18);
+  --shadow: 0 18px 40px rgba(23, 24, 31, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 15% 10%, #f7d8af 0%, transparent 33%),
+    radial-gradient(circle at 85% 25%, #aad7ff 0%, transparent 30%),
+    linear-gradient(130deg, var(--bg-0), var(--bg-1));
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Fraunces', serif;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(4px);
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 140ms ease, background-color 140ms ease;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: #e9eefb;
+  color: var(--primary-dark);
+}
+
+.input,
+.select {
+  width: 100%;
+  border: 1px solid #cfd6e5;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge.ok {
+  background: #dcf7e8;
+  color: #0d6337;
+}
+
+.badge.warn {
+  background: #ffe9c9;
+  color: #9f5c00;
+}
+
+.badge.err {
+  background: #ffd9d9;
+  color: #8b1616;
+}
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding: 18px 12px 32px;
+  }
+}

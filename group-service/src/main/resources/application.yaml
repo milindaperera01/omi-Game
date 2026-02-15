@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: group-service
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 9003
+
+app:
+  persistence: memory
+  game-service:
+    base-url: http://localhost:9001

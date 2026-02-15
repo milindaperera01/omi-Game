@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: api-gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${USER_SERVICE_JWKS_URI:http://localhost:9004/.well-known/jwks.json}
+
+server:
+  port: 9000
+
+app:
+  targets:
+    user-service: ${USER_SERVICE_URL:http://localhost:9004}
+    notification-service: ${NOTIFICATION_SERVICE_URL:http://localhost:9005}
+    group-service: ${GROUP_SERVICE_URL:http://localhost:9003}
+    game-service: ${GAME_SERVICE_URL:http://localhost:9001}
+    logic-service: ${LOGIC_SERVICE_URL:http://localhost:9002}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
