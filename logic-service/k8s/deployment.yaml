@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logic-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logic-service
+  template:
+    metadata:
+      labels:
+        app: logic-service
+    spec:
+      containers:
+        - name: logic-service
+          image: omi-logic-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9002

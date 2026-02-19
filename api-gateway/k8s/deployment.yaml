@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - name: api-gateway
+          image: omi-api-gateway:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+          env:
+            - name: USER_SERVICE_URL
+              value: http://user-service:9004
+            - name: NOTIFICATION_SERVICE_URL
+              value: http://notification-service:9005
+            - name: GROUP_SERVICE_URL
+              value: http://group-service:9003
+            - name: GAME_SERVICE_URL
+              value: http://game-service:9001
+            - name: LOGIC_SERVICE_URL
+              value: http://logic-service:9002
+            - name: USER_SERVICE_JWKS_URI
+              value: http://user-service:9004/.well-known/jwks.json
